@@ -9,8 +9,15 @@ Basic Address valdation through the USPS
 Requires a [USPS api key](https://www.usps.com/business/web-tools-apis/)
 
 
-Edit the secrets file with your key above:
-`EDITOR=vim rails credentials:edit`
+Remove any existing credentials file:
+
+```
+rm config/credentials.yml.enc
+```
+Create the secrets file with your api key above:
+```
+EDITOR=vim rails credentials:edit
+```
 
 Add the following
 
