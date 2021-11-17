@@ -1,24 +1,44 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Demo app for explaining RSpec concepts.
 
-Things you may want to cover:
+Basic Address valdation through the USPS
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
+Requires a [USPS api key](https://www.usps.com/business/web-tools-apis/)
 
-* Database creation
 
-* Database initialization
+Edit the secrets file with your key above:
+`EDITOR=vim rails credentials:edit`
 
-* How to run the test suite
+Add the following
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+usps:
+  user: <YOUR_API_KEY>
+```
 
-* Deployment instructions
+Migrate the database
 
-* ...
+```
+rails db:migrate
+```
+
+
+from the console create a user and an address:
+
+```
+u = User.create!(first_name: <YOUR NAME>, last_name: <YOUR NAME>, email: <YOUR EMAIL>)
+u.addresses.create!(street: <YOUR STREET>, city: <YOUR CITY>, state: <YOUR STATE ABBREVIATION>, zip_code: <YOUR ZIP CODE>)
+```
+
+
+can be called from the console:
+
+```
+address = Address.first
+
+UspsVerifyOrganizer.call(address: address)
+```
+
