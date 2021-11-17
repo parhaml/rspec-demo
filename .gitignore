@@ -1,0 +1,8 @@
+.DS_Store
+config/master.key
+tmp/
+log/test.log
+log/development.log
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
